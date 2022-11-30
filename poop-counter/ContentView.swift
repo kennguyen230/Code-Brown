@@ -12,95 +12,98 @@ struct ContentView: View {
     @State private var poop = 0
     
     var body: some View {
-        ZStack {
-            VStack{
-                
-                // For the two buttons at the top
-                HStack{
-                    Button{
-                        StatsView()
-                        print("herro")
-                    } label: {
-                        Image(systemName: "chart.bar.xaxis")
-                            .resizable()
-                            .frame(width:30, height:30)
-                            .padding(.leading, 25)
-                            .padding(.top, 25)
-                    }
-                    
-                    Spacer()
-                    
-                    Button{
-                        print("lerro")
-                        CalendarView()
-                    } label: {
-                        Image(systemName: "calendar.circle.fill")
-                            .resizable()
-                            .frame(width:30, height:30)
-                            .padding(.trailing, 25)
-                            .padding(.top, 25)
-                    }
-                    
-                }
-                
-                Spacer().frame(height:80)
-                
-                // For the month & day
-                HStack{
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 25)
-                            .frame(width: 250, height: 50)
-                            .foregroundColor(Color.gray)
-//                        Text(Date(), style:.date)
-                        Text(Date().formatted(date: .complete, time: .omitted))
-                        
-                    }
-                }
-                
-                Spacer().frame(height:125)
-                
-                // For the plus button, minus button, and counter
-                HStack{
-                    Spacer()
-                    
-                    // Minus button
-                    Button{
-                        if(poop == 0){
-                            return
-                        } else {
-                            poop-=1
+        NavigationStack {
+            ZStack {
+                VStack{
+                   
+                    // For the two buttons at the top
+                    HStack {
+                        NavigationLink {
+                            StatsView()
+                        } label: {
+                            Image(systemName: "chart.bar.xaxis")
+                                .resizable()
+                                .frame(width:30, height:30)
+                                .padding(.leading, 25)
+                                .padding(.top, 25)
                         }
-                    } label: {
-                        Image(systemName:"minus.circle")
-                            .resizable()
-                            .frame(width:28, height:28)
-                            .opacity(0.7)
+                        Spacer()
+                        NavigationLink {
+                            CalendarView()
+                        } label: {
+                            Image(systemName: "calendar.circle.fill")
+                                .resizable()
+                                .frame(width:30, height:30)
+                                .padding(.trailing, 25)
+                                .padding(.top, 25)
+                        }
                     }
                     
-                    Spacer()
+                    Spacer().frame(height:80)
                     
-                    // Counter
-                    Text(String(poop))
-                        .font(.system(size: 96))
+                    // For the month & day
+                    HStack{
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 25)
+                                .frame(width: 250, height: 50)
+                                .foregroundColor(Color.gray)
+                            
+                            Text(Date().formatted(
+                                .dateTime
+                                    .year(.twoDigits)
+                                    .month()
+                                    .day()
+                                    .weekday()
+                            ))
+                        }
+                    }
                     
-                    Spacer()
+                    Spacer().frame(height:125)
                     
-                    // Plus button
-                    Button{
-                        poop+=1
-                    } label: {
-                        Image(systemName:"plus.circle")
-                            .resizable()
-                            .frame(width:28, height:28)
-                            .opacity(0.7)
+                    // For the plus button, minus button, and counter
+                    HStack{
+                        Spacer()
+                        
+                        // Minus button
+                        Button{
+                            if(poop == 0){
+                                return
+                            } else {
+                                poop-=1
+                            }
+                        } label: {
+                            Image(systemName:"minus.circle")
+                                .resizable()
+                                .frame(width:28, height:28)
+                                .opacity(0.7)
+                        }
+                        
+                        Spacer()
+                        
+                        // Counter
+                        Text(String(poop))
+                            .font(.system(size: 96))
+                        
+                        Spacer()
+                        
+                        // Plus button
+                        Button{
+                            poop+=1
+                        } label: {
+                            Image(systemName:"plus.circle")
+                                .resizable()
+                                .frame(width:28, height:28)
+                                .opacity(0.7)
+                        }
+                        
+                        Spacer()
                     }
                     
                     Spacer()
                 }
-                
-                Spacer()
             }
         }
+        
     }
 }
 
