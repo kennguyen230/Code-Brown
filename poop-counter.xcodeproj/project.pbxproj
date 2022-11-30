@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B651A9F2937290500198C58 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B651A9E2937290500198C58 /* GlowBorder.swift */; };
 		5BB286AB292ED3EF0003E39B /* poop_counterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB286AA292ED3EF0003E39B /* poop_counterApp.swift */; };
 		5BB286AD292ED3EF0003E39B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB286AC292ED3EF0003E39B /* ContentView.swift */; };
 		5BB286AF292ED3F60003E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB286AE292ED3F60003E39B /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B651A9E2937290500198C58 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		5BB286A7292ED3EF0003E39B /* poop-counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "poop-counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB286AA292ED3EF0003E39B /* poop_counterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = poop_counterApp.swift; sourceTree = "<group>"; };
 		5BB286AC292ED3EF0003E39B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				5BB286AC292ED3EF0003E39B /* ContentView.swift */,
 				5BB286D6292F07310003E39B /* CalendarView.swift */,
 				5BB286D4292F07110003E39B /* StatsView.swift */,
+				5B651A9E2937290500198C58 /* GlowBorder.swift */,
 				5BB286AE292ED3F60003E39B /* Assets.xcassets */,
 				5BB286B0292ED3F60003E39B /* Preview Content */,
 			);
@@ -265,6 +268,7 @@
 			files = (
 				5BB286AD292ED3EF0003E39B /* ContentView.swift in Sources */,
 				5BB286AB292ED3EF0003E39B /* poop_counterApp.swift in Sources */,
+				5B651A9F2937290500198C58 /* GlowBorder.swift in Sources */,
 				5BB286D7292F07310003E39B /* CalendarView.swift in Sources */,
 				5BB286D5292F07110003E39B /* StatsView.swift in Sources */,
 			);

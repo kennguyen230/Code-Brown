@@ -13,95 +13,128 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                VStack{
-                   
-                    // For the two buttons at the top
-                    HStack {
-                        NavigationLink {
-                            StatsView()
-                        } label: {
-                            Image(systemName: "chart.bar.xaxis")
-                                .resizable()
-                                .frame(width:30, height:30)
-                                .padding(.leading, 25)
-                                .padding(.top, 25)
-                        }
-                        Spacer()
-                        NavigationLink {
-                            CalendarView()
-                        } label: {
-                            Image(systemName: "calendar.circle.fill")
-                                .resizable()
-                                .frame(width:30, height:30)
-                                .padding(.trailing, 25)
-                                .padding(.top, 25)
-                        }
-                    }
+            GeometryReader { geo in
+                ZStack {
                     
-                    Spacer().frame(height:80)
+                    // Homescreen background
+                    Image("bg-summer")
+                        .resizable()
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                        .frame(width: geo.size.width, height: geo.size.height,
+                               alignment: .center)
+                        .opacity(1.0)
                     
-                    // For the month & day
-                    HStack{
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .frame(width: 250, height: 50)
-                                .foregroundColor(Color.gray)
-                            
-                            Text(Date().formatted(
-                                .dateTime
-                                    .year(.twoDigits)
-                                    .month()
-                                    .day()
-                                    .weekday()
-                            ))
-                        }
-                    }
-                    
-                    Spacer().frame(height:125)
-                    
-                    // For the plus button, minus button, and counter
-                    HStack{
-                        Spacer()
-                        
-                        // Minus button
-                        Button{
-                            if(poop == 0){
-                                return
-                            } else {
-                                poop-=1
+                    VStack {
+                        // For the two buttons at the top
+                        HStack {
+                            NavigationLink {
+                                StatsView()
+                            } label: {
+                                Image(systemName: "chart.bar.xaxis")
+                                    .resizable()
+                                    .frame(width:30, height:30)
+                                    .background(
+                                    Circle()
+                                        .foregroundColor(.white)
+                                        .frame(width:48, height: 48)
+                                    )
+                                    .padding(.leading, 25)
+                                    .padding(.top, 25)
                             }
-                        } label: {
-                            Image(systemName:"minus.circle")
-                                .resizable()
-                                .frame(width:28, height:28)
-                                .opacity(0.7)
+                            
+                            Spacer()
+                            
+                            NavigationLink {
+                                CalendarView()
+                            } label: {
+                                Image(systemName: "calendar")
+                                    .resizable()
+                                    .frame(width:30, height:30)
+                                    .background(
+                                    Circle()
+                                        .foregroundColor(.white)
+                                        .frame(width:48, height: 48)
+                                    )
+                                    .padding(.trailing, 25)
+                                    .padding(.top, 25)
+                            }
                         }
                         
-                        Spacer()
+                        Spacer().frame(height:80)
                         
-                        // Counter
-                        Text(String(poop))
-                            .font(.system(size: 96))
+                        // For the month & day
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 25)
+                                    .frame(width: 250, height: 50)
+                                    .foregroundColor(.white)
+                                
+                                Text(Date().formatted(
+                                    .dateTime
+                                        .year(.twoDigits)
+                                        .month()
+                                        .day()
+                                        .weekday()
+                                ))
+                            }
+                        }
                         
-                        Spacer()
+                        Spacer().frame(height:125)
                         
-                        // Plus button
-                        Button{
-                            poop+=1
-                        } label: {
-                            Image(systemName:"plus.circle")
-                                .resizable()
-                                .frame(width:28, height:28)
-                                .opacity(0.7)
+                        // For the plus button, minus button, and counter
+                        HStack{
+                            Spacer()
+                            
+                            // Minus button
+                            Button{
+                                if(poop == 0){
+                                    return
+                                } else {
+                                    poop-=1
+                                }
+                            } label: {
+                                Image(systemName:"minus.circle")
+                                    .resizable()
+                                    .frame(width:40, height:40)
+                                    .foregroundColor(.accentColor)
+                                    .opacity(1.0)
+//                                    .glowBorder(color: .white, lineWidth: 4)
+                                
+                            }
+                            
+                            Spacer()
+                            
+                            // Counter
+                            Text(String(poop))
+                                .font(.system(size: 102))
+//                                .fontWeight(.bold)
+                                .foregroundColor(.accentColor)
+                                .glowBorder(color: .white, lineWidth: 4)
+                            
+                            
+                            Spacer()
+                            
+                            // Plus button
+                            Button{
+                                poop+=1
+                            } label: {
+                                Image(systemName:"plus.circle")
+                                    .resizable()
+                                    .frame(width:40, height:40)
+                                    .foregroundColor(.accentColor)
+                                    .opacity(1.0)
+//                                    .glowBorder(color: .white, lineWidth: 4)
+                            }
+                            
+                            Spacer()
                         }
                         
                         Spacer()
                     }
-                    
-                    Spacer()
                 }
             }
+            
         }
         
     }
