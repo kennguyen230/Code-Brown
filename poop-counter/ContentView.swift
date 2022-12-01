@@ -37,7 +37,7 @@ struct ContentView: View {
                                     .background(
                                     Circle()
                                         .foregroundColor(.white)
-                                        .frame(width:48, height: 48)
+                                        .frame(width:45, height: 45)
                                     )
                                     .padding(.leading, 25)
                                     .padding(.top, 25)
@@ -54,7 +54,7 @@ struct ContentView: View {
                                     .background(
                                     Circle()
                                         .foregroundColor(.white)
-                                        .frame(width:48, height: 48)
+                                        .frame(width:45, height: 45)
                                     )
                                     .padding(.trailing, 25)
                                     .padding(.top, 25)
@@ -107,7 +107,7 @@ struct ContentView: View {
                             
                             // Counter
                             Text(String(poop))
-                                .font(.system(size: 102))
+                                .font(.system(size: 96, weight: .medium, design: .rounded))
 //                                .fontWeight(.bold)
                                 .foregroundColor(.accentColor)
                                 .glowBorder(color: .white, lineWidth: 4)
