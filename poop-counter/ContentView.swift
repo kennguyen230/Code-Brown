@@ -15,7 +15,6 @@ struct ContentView: View {
         NavigationStack {
             GeometryReader { geo in
                 ZStack {
-                    
                     // Homescreen background
                     Image("bg-summer")
                         .resizable()
@@ -37,7 +36,7 @@ struct ContentView: View {
                                     .background(
                                     Circle()
                                         .foregroundColor(.white)
-                                        .frame(width:45, height: 45)
+                                        .frame(width:50, height: 50)
                                     )
                                     .padding(.leading, 25)
                                     .padding(.top, 25)
@@ -54,7 +53,7 @@ struct ContentView: View {
                                     .background(
                                     Circle()
                                         .foregroundColor(.white)
-                                        .frame(width:45, height: 45)
+                                        .frame(width:50, height: 50)
                                     )
                                     .padding(.trailing, 25)
                                     .padding(.top, 25)
@@ -110,7 +109,7 @@ struct ContentView: View {
                                 .font(.system(size: 96, weight: .medium, design: .rounded))
 //                                .fontWeight(.bold)
                                 .foregroundColor(.accentColor)
-                                .glowBorder(color: .white, lineWidth: 4)
+                                .glowBorder(color: .white, lineWidth: 2)
                             
                             
                             Spacer()

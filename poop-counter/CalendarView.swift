@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CalendarView: View {
     
-    private var data: [Int] = [50, 0, 56, 69, 3, 71, 33, 45, 2, 34, 100, 3]
+    @State var isEditing = false
+    @State var data: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
     private let colors: [Color] = [.red, .green, .blue, .yellow]
     private let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
    
@@ -21,74 +22,91 @@ struct CalendarView: View {
     
     var body: some View {
         NavigationStack {
-            
-            HStack {
-                Spacer()
-                Button {
-                // TODO: Add functionality to edit button
-                    print("Edit mode")
-                } label: {
-                    Image(systemName: "pencil.circle")
-                        .resizable()
-                        .frame(width:30, height:30)
-                        .padding(.trailing, 20)
-                }
-            }
-            
-            Spacer()
-                .frame(height:30)
-            
-            LazyVGrid(columns: flexibleColumns, spacing: 30) {
-                ForEach(data.indices) { index in
-//                ForEach(Array(data.enumerated()), id: \.1) { (number,index) in
-                    VStack {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 105, height: 95)
-                                .foregroundColor(colors[index%4])
-                                .cornerRadius(25)
-                                .shadow(color: .gray, radius: 10.0)
-                            Text("\(data[index])")
-                                .foregroundColor(.white)
-                                .font(.system(size: 45, weight: .medium, design: .rounded))
+            ZStack {
+//                Color("CreamColor")
+//                    .ignoresSafeArea()
+                LinearGradient(gradient: Gradient(colors: [Color("CreamColor"), Color.white]), startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                
+                VStack {
+                    HStack {
+//                        Spacer()
+                        Button {
+                        // TODO: Add functionality to edit button
+                            self.isEditing.toggle()
+                        } label: {
+                            Image(systemName: "pencil.circle")
+                                .resizable()
+                                .frame(width:30, height:30)
+//                                .padding(.trailing, 20)
+                                .padding(.leading, 20)
+                                .foregroundColor(.black)
+                                .opacity(0.75)
+                        }
+                        Spacer()
+                    }
+                    
+                    LazyVGrid(columns: flexibleColumns, spacing: 30) {
+                        ForEach(data.indices) { index in
+                            VStack {
+                                ZStack {
+                                    Rectangle()
+                                        .frame(width: 95, height: 80)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(25)
+                                        .shadow(color: .gray, radius: 8.0)
+                                    
+                                    if (data[index] == 0) {
+                                        Text("\(data[index])")
+                                            .hidden()
+                                    }
+                                    else {
+                                        if (isEditing) {
+                                            TextField("Name", text: $data[index])
+                                                
+                                        }
+                                        else {
+                                            Text("\(data[index])")
+                                                .foregroundColor(.black)
+                                                .font(.system(size: 40, weight: .medium, design: .rounded))
+                                        }
+                                        
+                                    }
+                                }
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.trailing, 50)
+                                .padding(.leading, 50)
+                                
+                                Text(months[Int(index)])
+                                
+                            }
+                        }
+                    }
+                    
+                    ZStack {
+                        Rectangle()
+                            .frame(width:350, height: 85)
+                            .foregroundColor(.white)
+                            .cornerRadius(25)
+                            .shadow(color: .gray, radius:10.0)
+                        VStack {
+                            Text("\(calcCumulative(data: data))")
+                                .foregroundColor(.black)
+                                .frame(maxWidth: 315, alignment: .leading)
+                                .font(.system(size:45, weight:.medium, design:.rounded))
+                            Text("Cumulative score")
+                                .foregroundColor(.black)
+                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .frame(maxWidth: 315, alignment: .leading)
                             
                         }
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.trailing, 50)
-                        .padding(.leading, 50)
-                        
-                        Text(months[Int(index)])
-                        
                     }
                 }
             }
-            
-            Spacer()
-                .frame(height:20)
-            
-            ZStack {
-                Rectangle()
-                    .frame(width:360, height: 85)
-                    .foregroundColor(.blue)
-                    .cornerRadius(25)
-                    .shadow(color: .gray, radius:10.0)
-                VStack {
-                    Text("\(calcCumulative(data: data))")
-                        .foregroundColor(.white)
-                        .font(.system(size:45, weight:.medium, design:.rounded))
-                        .frame(maxWidth: 315, alignment: .leading)
-                    Text("Cumulative score")
-                        .foregroundColor(.white)
-                        .font(.system(size:14, weight:.medium, design:.rounded))
-                        .frame(maxWidth: 315, alignment: .leading)
-                        
-                    
-                }
-            }
-            
-            Spacer()
+            .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
             
         }
+        
         
     }
 }
