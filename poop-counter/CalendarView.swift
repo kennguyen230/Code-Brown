@@ -9,8 +9,10 @@ import SwiftUI
 
 struct CalendarView: View {
     
+    @State var showSave = false
     @State var isEditing = false
     @State var data: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
+    @State var dataAsString = [String]()
     private let colors: [Color] = [.red, .green, .blue, .yellow]
     private let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
    
@@ -23,28 +25,42 @@ struct CalendarView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-//                Color("CreamColor")
-//                    .ignoresSafeArea()
                 LinearGradient(gradient: Gradient(colors: [Color("CreamColor"), Color.white]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
                 
                 VStack {
-                    HStack {
-//                        Spacer()
-                        Button {
-                        // TODO: Add functionality to edit button
-                            self.isEditing.toggle()
-                        } label: {
-                            Image(systemName: "pencil.circle")
-                                .resizable()
-                                .frame(width:30, height:30)
-//                                .padding(.trailing, 20)
-                                .padding(.leading, 20)
-                                .foregroundColor(.black)
-                                .opacity(0.75)
+                    ZStack {
+                        HStack {
+                            Spacer()
+                            Button {
+                                self.isEditing.toggle()
+                                self.showSave.toggle()
+                                dataAsString = intToStr(intArr: data)
+                            } label: {
+                                if(!showSave) {
+                                    Image(systemName: "pencil.circle")
+                                        .resizable()
+                                        .frame(width:35, height:35)
+                                        .foregroundColor(.black)
+                                }
+                            }
+
+                            Button {
+                                self.isEditing.toggle()
+                                data = strToInt(strArr: dataAsString)
+                                self.showSave.toggle()
+                            } label: {
+                                if(showSave) {
+                                    Text("Save")
+                                        .font(.system(size: 28.5)).fontWeight(.light)
+                                        .foregroundColor(Color.blue)
+                                        .opacity(showSave ? 1:0)
+                                }
+                            }
                         }
-                        Spacer()
+                        .padding(.trailing, 15)
                     }
+                    .padding(.bottom, 10)
                     
                     LazyVGrid(columns: flexibleColumns, spacing: 30) {
                         ForEach(data.indices) { index in
@@ -57,13 +73,19 @@ struct CalendarView: View {
                                         .shadow(color: .gray, radius: 8.0)
                                     
                                     if (data[index] == 0) {
+                                        //TODO: MAKE IT SO THAT YOU CAN EDIT INVISIBLE MONTHS
                                         Text("\(data[index])")
-                                            .hidden()
+                                            .foregroundColor(.black)
+                                            .font(.system(size: 40, weight: .medium, design: .rounded))
+                                            .multilineTextAlignment(.center)
+                                            .opacity(0)
                                     }
                                     else {
                                         if (isEditing) {
-                                            TextField("Name", text: $data[index])
-                                                
+                                            TextField("Name", text: $dataAsString[index])
+                                                .foregroundColor(.black)
+                                                .font(.system(size: 40, weight: .medium, design: .rounded))
+                                                .multilineTextAlignment(.center)
                                         }
                                         else {
                                             Text("\(data[index])")
@@ -103,7 +125,7 @@ struct CalendarView: View {
                     }
                 }
             }
-            .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
+//            .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
             
         }
         
@@ -123,4 +145,14 @@ func calcCumulative(data: Array<Int>) -> Int {
         cumulative += data[i]
     }
     return cumulative
+}
+
+func strToInt (strArr: Array<String>) -> Array<Int> {
+    var intArr = strArr.map { Int($0)! }
+    return intArr
+}
+
+func intToStr (intArr: Array<Int>) -> Array<String> {
+    var strArr = intArr.map { String($0) }
+    return strArr
 }

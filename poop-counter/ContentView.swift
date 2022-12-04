@@ -53,7 +53,7 @@ struct ContentView: View {
                                     .background(
                                     Circle()
                                         .foregroundColor(.white)
-                                        .frame(width:50, height: 50)
+                                        .frame(width:50, height: 50 )
                                     )
                                     .padding(.trailing, 25)
                                     .padding(.top, 25)
