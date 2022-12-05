@@ -17,4 +17,11 @@ func intToStr (intArr: Array<Int>) -> Array<String> {
     return strArr
 }
 
+func create2D(data1: [Int], data2: [Int], data3: [Int]) -> [[Int]] {
+    var dataGrouped = [[Int]]()
+    dataGrouped.append(data1)
+    dataGrouped.append(data2)
+    dataGrouped.append(data3)
+    return dataGrouped
+}
 

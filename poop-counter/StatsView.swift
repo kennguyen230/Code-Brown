@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct StatsView: View {
+    
+    // TEMPORARY DATA
+    @State var data: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
+    @State var data2020: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
+    @State var data2021: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
+    @State var data2022: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
+    @State var dataGrouped = [[Int]]() //TODO: FIND OUT HOW TO GROUP DATA
+    @State var dataAsString = [String]()
+    
     var body: some View {
         NavigationStack {
             ScrollView () {
@@ -19,7 +28,7 @@ struct StatsView: View {
                             .foregroundColor(.white)
                             .shadow(color: Color.black.opacity(0.8), radius: 10)
                         VStack {
-                            Text("0")
+                            Text("\(calcCumulativeYr(data:data))")
                                 .foregroundColor(.black)
                                 .frame(maxWidth: 315, alignment: .leading)
                                 .font(.system(size:45, weight:.medium, design:.rounded))
@@ -57,7 +66,7 @@ struct StatsView: View {
                                 .foregroundColor(.white)
                                 .shadow(color: Color.black.opacity(0.8), radius: 10)
                             VStack {
-                                Text("54.5")
+                                Text("\(avgPoopsYr(data:data))")
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 125, alignment: .leading)
                                     .font(.system(size:25, weight:.medium, design:.rounded))
@@ -77,7 +86,7 @@ struct StatsView: View {
                                 .foregroundColor(.white)
                                 .shadow(color: Color.black.opacity(0.8), radius: 10)
                             VStack {
-                                Text("52.7")
+                                Text("n/a")
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 125, alignment: .leading)
                                     .font(.system(size:25, weight:.medium, design:.rounded))
@@ -95,7 +104,7 @@ struct StatsView: View {
                             .foregroundColor(.white)
                             .shadow(color: Color.black.opacity(0.8), radius: 10)
                         VStack {
-                            Text("November: 85")
+                            Text("\(maxPoopYr(data:data))")
                                 .foregroundColor(.black)
                                 .frame(maxWidth: 315, alignment: .leading)
                                 .font(.system(size:35, weight:.medium, design:.rounded))
@@ -112,7 +121,7 @@ struct StatsView: View {
                             .foregroundColor(.white)
                             .shadow(color: Color.black.opacity(0.8), radius: 10)
                         VStack {
-                            Text("July 2021: 92")
+                            Text("n/a")
                                 .foregroundColor(.black)
                                 .frame(maxWidth: 315, alignment: .leading)
                                 .font(.system(size:35, weight:.medium, design:.rounded))

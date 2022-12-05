@@ -9,11 +9,12 @@ import SwiftUI
 
 struct CalendarView: View {
     
-    @State var showSave = false
-    @State var isEditing = false
+    // TEMPORARY DATA
     @State var data: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
     @State var dataAsString = [String]()
-    private let colors: [Color] = [.red, .green, .blue, .yellow]
+    
+    @State var showSave = false
+    @State var isEditing = false
     private let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     private let flexibleColumns = [
