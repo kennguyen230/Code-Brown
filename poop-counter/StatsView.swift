@@ -9,7 +9,125 @@ import SwiftUI
 
 struct StatsView: View {
     var body: some View {
-        Text("Hello stats!")
+        NavigationStack {
+            ScrollView () {
+                VStack {
+                    // Cumulative poops this year
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width:350, height: 100)
+                            .foregroundColor(.white)
+                            .shadow(color: Color.black.opacity(0.8), radius: 10)
+                        VStack {
+                            Text("0")
+                                .foregroundColor(.black)
+                                .frame(maxWidth: 315, alignment: .leading)
+                                .font(.system(size:45, weight:.medium, design:.rounded))
+                            Text("Cumulative poops this year")
+                                .foregroundColor(.black)
+                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .frame(maxWidth: 315, alignment: .leading)
+                        }
+                    }
+                    
+                    // Cumulative poops all time
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width:350, height: 100)
+                            .foregroundColor(.white)
+                            .shadow(color: Color.black.opacity(0.8), radius: 10)
+                        VStack {
+                            Text("n/a")
+                                .foregroundColor(.black)
+                                .frame(maxWidth: 315, alignment: .leading)
+                                .font(.system(size:45, weight:.medium, design:.rounded))
+                            Text("Cumulative poops all time")
+                                .foregroundColor(.black)
+                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .frame(maxWidth: 315, alignment: .leading)
+                        }
+                    }
+                    .padding(.bottom, 10)
+                    
+                    HStack {
+                        // Avg poops this year
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width:165, height: 100)
+                                .foregroundColor(.white)
+                                .shadow(color: Color.black.opacity(0.8), radius: 10)
+                            VStack {
+                                Text("54.5")
+                                    .foregroundColor(.black)
+                                    .frame(maxWidth: 125, alignment: .leading)
+                                    .font(.system(size:25, weight:.medium, design:.rounded))
+                                Text("Avg poops this year")
+                                    .foregroundColor(.black)
+                                    .font(.system(size:15, weight:.medium, design:.rounded))
+                                    .frame(maxWidth: 125, alignment: .leading)
+                            }
+                        }
+                        
+                        Spacer().frame(width:20)
+                        
+                        // Avg poops all time
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(width:165, height: 100)
+                                .foregroundColor(.white)
+                                .shadow(color: Color.black.opacity(0.8), radius: 10)
+                            VStack {
+                                Text("52.7")
+                                    .foregroundColor(.black)
+                                    .frame(maxWidth: 125, alignment: .leading)
+                                    .font(.system(size:25, weight:.medium, design:.rounded))
+                                Text("Avg poops all time")
+                                    .foregroundColor(.black)
+                                    .font(.system(size:15, weight:.medium, design:.rounded))
+                                    .frame(maxWidth: 125, alignment: .leading)
+                            }
+                        }
+                    }
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width:350, height: 100)
+                            .foregroundColor(.white)
+                            .shadow(color: Color.black.opacity(0.8), radius: 10)
+                        VStack {
+                            Text("November: 85")
+                                .foregroundColor(.black)
+                                .frame(maxWidth: 315, alignment: .leading)
+                                .font(.system(size:35, weight:.medium, design:.rounded))
+                            Text("Best month this year")
+                                .foregroundColor(.black)
+                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .frame(maxWidth: 315, alignment: .leading)
+                        }
+                    }
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .frame(width:350, height: 100)
+                            .foregroundColor(.white)
+                            .shadow(color: Color.black.opacity(0.8), radius: 10)
+                        VStack {
+                            Text("July 2021: 92")
+                                .foregroundColor(.black)
+                                .frame(maxWidth: 315, alignment: .leading)
+                                .font(.system(size:35, weight:.medium, design:.rounded))
+                            Text("Best month all time")
+                                .foregroundColor(.black)
+                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .frame(maxWidth: 315, alignment: .leading)
+                        }
+                    }
+                }
+                .frame(minWidth: 0, maxWidth: .infinity)
+            }
+            .navigationTitle("Stats")
+            .background(Color("MintGreen"))
+        }
     }
 }
 

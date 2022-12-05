@@ -15,7 +15,7 @@ struct CalendarView: View {
     @State var dataAsString = [String]()
     private let colors: [Color] = [.red, .green, .blue, .yellow]
     private let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-   
+    
     private let flexibleColumns = [
         GridItem(.flexible(minimum: 100)),
         GridItem(.flexible(minimum: 100)),
@@ -23,114 +23,111 @@ struct CalendarView: View {
     ]
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [Color("CreamColor"), Color.white]), startPoint: .top, endPoint: .bottom)
-                    .ignoresSafeArea()
-                
-                VStack {
-                    ZStack {
-                        HStack {
-                            Spacer()
-                            Button {
-                                self.isEditing.toggle()
-                                self.showSave.toggle()
-                                dataAsString = intToStr(intArr: data)
-                            } label: {
-                                if(!showSave) {
-                                    Image(systemName: "pencil.circle")
-                                        .resizable()
-                                        .frame(width:35, height:35)
-                                        .foregroundColor(.black)
-                                }
-                            }
-
-                            Button {
-                                self.isEditing.toggle()
-                                data = strToInt(strArr: dataAsString)
-                                self.showSave.toggle()
-                            } label: {
-                                if(showSave) {
-                                    Text("Save")
-                                        .font(.system(size: 28.5)).fontWeight(.light)
-                                        .foregroundColor(Color.blue)
-                                        .opacity(showSave ? 1:0)
-                                }
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color("CreamColor"), Color.white]), startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            
+            VStack {
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            self.isEditing.toggle()
+                            self.showSave.toggle()
+                            dataAsString = intToStr(intArr: data)
+                        } label: {
+                            if(!showSave) {
+                                Image(systemName: "pencil.circle")
+                                    .resizable()
+                                    .frame(width:35, height:35)
+                                    .foregroundColor(.black)
                             }
                         }
-                        .padding(.trailing, 15)
+                        
+                        Button {
+                            self.isEditing.toggle()
+                            data = strToInt(strArr: dataAsString)
+                            self.showSave.toggle()
+                        } label: {
+                            if(showSave) {
+                                Text("Save")
+                                    .font(.system(size: 28.5)).fontWeight(.light)
+                                    .foregroundColor(Color.blue)
+                                    .opacity(showSave ? 1:0)
+                            }
+                        }
                     }
-                    .padding(.bottom, 10)
-                    
-                    LazyVGrid(columns: flexibleColumns, spacing: 30) {
-                        ForEach(data.indices) { index in
-                            VStack {
-                                ZStack {
-                                    Rectangle()
-                                        .frame(width: 95, height: 80)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(25)
-                                        .shadow(color: .gray, radius: 8.0)
-                                    
-                                    if (data[index] == 0) {
-                                        //TODO: MAKE IT SO THAT YOU CAN EDIT INVISIBLE MONTHS
-                                        Text("\(data[index])")
+                    .padding(.trailing, 15)
+                }
+                .padding(.bottom, 10)
+                
+                LazyVGrid(columns: flexibleColumns, spacing: 30) {
+                    ForEach(data.indices) { index in
+                        VStack {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 95, height: 80)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(25)
+                                    .shadow(color: .gray, radius: 8.0)
+                                
+                                if (data[index] == 0) {
+                                    //TODO: MAKE IT SO THAT YOU CAN EDIT INVISIBLE MONTHS
+                                    Text("\(data[index])")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 40, weight: .medium, design: .rounded))
+                                        .multilineTextAlignment(.center)
+                                        .opacity(0)
+                                }
+                                else {
+                                    if (isEditing) {
+                                        TextField("Name", text: $dataAsString[index])
                                             .foregroundColor(.black)
                                             .font(.system(size: 40, weight: .medium, design: .rounded))
                                             .multilineTextAlignment(.center)
-                                            .opacity(0)
                                     }
                                     else {
-                                        if (isEditing) {
-                                            TextField("Name", text: $dataAsString[index])
-                                                .foregroundColor(.black)
-                                                .font(.system(size: 40, weight: .medium, design: .rounded))
-                                                .multilineTextAlignment(.center)
-                                        }
-                                        else {
-                                            Text("\(data[index])")
-                                                .foregroundColor(.black)
-                                                .font(.system(size: 40, weight: .medium, design: .rounded))
-                                        }
-                                        
+                                        Text("\(data[index])")
+                                            .foregroundColor(.black)
+                                            .font(.system(size: 40, weight: .medium, design: .rounded))
                                     }
+                                    
                                 }
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.trailing, 50)
-                                .padding(.leading, 50)
-                                
-                                Text(months[Int(index)])
-                                
                             }
-                        }
-                    }
-                    
-                    ZStack {
-                        Rectangle()
-                            .frame(width:350, height: 85)
-                            .foregroundColor(.white)
-                            .cornerRadius(25)
-                            .shadow(color: .gray, radius:10.0)
-                        VStack {
-                            Text("\(calcCumulative(data: data))")
-                                .foregroundColor(.black)
-                                .frame(maxWidth: 315, alignment: .leading)
-                                .font(.system(size:45, weight:.medium, design:.rounded))
-                            Text("Cumulative score")
-                                .foregroundColor(.black)
-                                .font(.system(size:14, weight:.medium, design:.rounded))
-                                .frame(maxWidth: 315, alignment: .leading)
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.trailing, 50)
+                            .padding(.leading, 50)
+                            
+                            Text(months[Int(index)])
                             
                         }
                     }
                 }
+                
+                ZStack {
+                    Rectangle()
+                        .frame(width:350, height: 85)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(color: .gray, radius:10.0)
+                    VStack {
+                        Text("\(calcCumulative(data: data))")
+                            .foregroundColor(.black)
+                            .frame(maxWidth: 315, alignment: .leading)
+                            .font(.system(size:45, weight:.medium, design:.rounded))
+                        Text("Cumulative score")
+                            .foregroundColor(.black)
+                            .font(.system(size:14, weight:.medium, design:.rounded))
+                            .frame(maxWidth: 315, alignment: .leading)
+                    }
+                }
             }
-//            .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
-            
         }
-        
-        
+        .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
+        //TODO: Change animation to something more poppy
     }
+    
+    
 }
 
 struct CalendarView_Previews: PreviewProvider {
@@ -139,20 +136,6 @@ struct CalendarView_Previews: PreviewProvider {
     }
 }
 
-func calcCumulative(data: Array<Int>) -> Int {
-    var cumulative: Int = 0
-    for i in 0..<(data.count) {
-        cumulative += data[i]
-    }
-    return cumulative
-}
 
-func strToInt (strArr: Array<String>) -> Array<Int> {
-    var intArr = strArr.map { Int($0)! }
-    return intArr
-}
 
-func intToStr (intArr: Array<Int>) -> Array<String> {
-    var strArr = intArr.map { String($0) }
-    return strArr
-}
+
