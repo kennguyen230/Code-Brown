@@ -111,7 +111,7 @@ struct CalendarView: View {
                         .cornerRadius(25)
                         .shadow(color: .gray, radius:10.0)
                     VStack {
-                        Text("\(calcCumulative(data: data))")
+                        Text("\(calcCumulativeYr(data: data))")
                             .foregroundColor(.black)
                             .frame(maxWidth: 315, alignment: .leading)
                             .font(.system(size:45, weight:.medium, design:.rounded))
