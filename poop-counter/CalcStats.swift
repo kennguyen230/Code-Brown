@@ -8,7 +8,6 @@
 import Foundation
 
 /*
- 
     For 'all time' functions the data will be multiple arrays,
     each representing each year (data2019, data2020, etc).
  
@@ -19,7 +18,6 @@ import Foundation
         4. Avg poops all time
         5. Max poop this year
         6. Max poop all time
-        
  */
 
 func calcCumulativeYr(data: [Int]) -> Int {

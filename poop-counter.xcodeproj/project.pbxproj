@@ -10,6 +10,12 @@
 		5B651A9F2937290500198C58 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B651A9E2937290500198C58 /* GlowBorder.swift */; };
 		5B71944B293D45F500DA3ACF /* ArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71944A293D45F500DA3ACF /* ArrayBuilder.swift */; };
 		5B71944D293D478200DA3ACF /* CalcStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71944C293D478200DA3ACF /* CalcStats.swift */; };
+		5B725098293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B725097293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf */; };
+		5B725099293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B725097293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf */; };
+		5B72509A293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B725097293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf */; };
+		5B72509D293F3AD900540A98 /* Heebo-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B72509C293F3AD900540A98 /* Heebo-VariableFont_wght.ttf */; };
+		5B72509E293F3AD900540A98 /* Heebo-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B72509C293F3AD900540A98 /* Heebo-VariableFont_wght.ttf */; };
+		5B72509F293F3AD900540A98 /* Heebo-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B72509C293F3AD900540A98 /* Heebo-VariableFont_wght.ttf */; };
 		5BB286AB292ED3EF0003E39B /* poop_counterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB286AA292ED3EF0003E39B /* poop_counterApp.swift */; };
 		5BB286AD292ED3EF0003E39B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB286AC292ED3EF0003E39B /* ContentView.swift */; };
 		5BB286AF292ED3F60003E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB286AE292ED3F60003E39B /* Assets.xcassets */; };
@@ -42,6 +48,9 @@
 		5B651A9E2937290500198C58 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		5B71944A293D45F500DA3ACF /* ArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBuilder.swift; sourceTree = "<group>"; };
 		5B71944C293D478200DA3ACF /* CalcStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcStats.swift; sourceTree = "<group>"; };
+		5B725097293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet[ELGR,ELSH,wght].ttf"; sourceTree = "<group>"; };
+		5B72509B293F392400540A98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5B72509C293F3AD900540A98 /* Heebo-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		5BB286A7292ED3EF0003E39B /* poop-counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "poop-counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB286AA292ED3EF0003E39B /* poop_counterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = poop_counterApp.swift; sourceTree = "<group>"; };
 		5BB286AC292ED3EF0003E39B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B725096293F390300540A98 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5B72509C293F3AD900540A98 /* Heebo-VariableFont_wght.ttf */,
+				5B725097293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5BB2869E292ED3EF0003E39B = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +122,8 @@
 		5BB286A9292ED3EF0003E39B /* poop-counter */ = {
 			isa = PBXGroup;
 			children = (
+				5B72509B293F392400540A98 /* Info.plist */,
+				5B725096293F390300540A98 /* Fonts */,
 				5BB286AA292ED3EF0003E39B /* poop_counterApp.swift */,
 				5BB286AC292ED3EF0003E39B /* ContentView.swift */,
 				5BB286D6292F07310003E39B /* CalendarView.swift */,
@@ -247,6 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB286B2292ED3F60003E39B /* Preview Assets.xcassets in Resources */,
+				5B72509D293F3AD900540A98 /* Heebo-VariableFont_wght.ttf in Resources */,
+				5B725098293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf in Resources */,
 				5BB286AF292ED3F60003E39B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +277,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B725099293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf in Resources */,
+				5B72509E293F3AD900540A98 /* Heebo-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +286,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B72509A293F391600540A98 /* Handjet[ELGR,ELSH,wght].ttf in Resources */,
+				5B72509F293F3AD900540A98 /* Heebo-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +465,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"poop-counter/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "poop-counter/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,6 +494,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"poop-counter/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "poop-counter/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
