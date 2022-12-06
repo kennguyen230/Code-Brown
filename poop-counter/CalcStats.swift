@@ -26,12 +26,10 @@ func calcCumulativeYr(data: [Int]) -> Int {
     return data.reduce(0,+)
 }
 
-/*
-    data2019 = [1,2,3,4,5,6,7,8,9,10,11,12]
-    data2020 = [2,4,6,8,10,12,14,16,18,20,24,26]
-    data2021 = [3,6,9,12,15,18,21,24,27,30,36,39]
-    dataAT = [[data2019], [data2020], [data2021]]
- */
+func calcCumulativeYr2(data: [String:Int]) -> Int {
+    return data.values.reduce(0,+)
+}
+
 func calcCumulativeAT(data: [[Int]]) -> Int {
     var total = 0
     data.forEach { year in
@@ -40,22 +38,44 @@ func calcCumulativeAT(data: [[Int]]) -> Int {
     return total
 }
 
+func calcCumulativeAT2(data: [String : [String:Int] ]) -> Int {
+    var total = 0
+    data.values.forEach { year in
+        year.forEach { month in
+            total += month.value
+        }
+    }
+    return total
+}
+
 func avgPoopsYr(data: [Int]) -> Int {
     return data.reduce(0,+)/data.count
+}
+
+func avgPoopsYr2(data: [String:Int]) -> Int {
+    return data.values.reduce(0,+)/data.values.count
 }
 
 func avgPoopsAT(data: [[Int]]) -> Int {
     return calcCumulativeAT(data: data)/(data.count*12)
 }
 
+func avgPoopsAT2(data: [String : [String:Int] ]) -> Int {
+    return calcCumulativeAT2(data: data)/(data.values.count*12)
+}
+
 func maxPoopYr(data: [Int]) -> Int {
     return data.max() ?? 0
+}
+
+func maxPoopYr2(data: [String:Int]) -> Int {
+    return data.values.max() ?? 0
 }
 
 func maxPoopAT(data: [[Int]]) -> Int {
     var max = 0
     data.forEach { year in
-        var temp = maxPoopYr(data: year)
+        let temp = maxPoopYr(data: year)
         if(temp > max) {
             max = temp
         }
@@ -63,9 +83,15 @@ func maxPoopAT(data: [[Int]]) -> Int {
     return max
 }
 
-
-
-
-
-
-
+func maxPoopAT2(data: [String : [String:Int] ]) -> Int {
+    var max = 0
+    data.values.forEach { year in
+        year.forEach { month in
+            let temp = month.value
+            if (temp > max) {
+                max = temp
+            }
+        }
+    }
+    return max
+}

@@ -16,6 +16,7 @@ struct StatsView: View {
     @State var data2022: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
     @State var dataGrouped = [[Int]]() //TODO: FIND OUT HOW TO GROUP DATA
     @State var dataAsString = [String]()
+    private let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     var body: some View {
         NavigationStack {

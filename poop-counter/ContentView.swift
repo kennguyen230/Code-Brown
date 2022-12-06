@@ -98,8 +98,6 @@ struct ContentView: View {
                                     .frame(width:40, height:40)
                                     .foregroundColor(.accentColor)
                                     .opacity(1.0)
-//                                    .glowBorder(color: .white, lineWidth: 4)
-                                
                             }
                             
                             Spacer()
@@ -107,9 +105,8 @@ struct ContentView: View {
                             // Counter
                             Text(String(poop))
                                 .font(.system(size: 96, weight: .medium, design: .rounded))
-//                                .fontWeight(.bold)
                                 .foregroundColor(.accentColor)
-                                .glowBorder(color: .white, lineWidth: 2)
+                                .glowBorder(color: .white, lineWidth: 1)
                             
                             
                             Spacer()
@@ -123,19 +120,14 @@ struct ContentView: View {
                                     .frame(width:40, height:40)
                                     .foregroundColor(.accentColor)
                                     .opacity(1.0)
-//                                    .glowBorder(color: .white, lineWidth: 4)
                             }
-                            
                             Spacer()
                         }
-                        
                         Spacer()
                     }
                 }
             }
-            
         }
-        
     }
 }
 
