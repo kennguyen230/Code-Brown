@@ -66,16 +66,18 @@ struct ContentView: View {
                         HStack{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 25)
-                                    .frame(width: 250, height: 50)
+                                    .frame(width: 275, height: 50)
                                     .foregroundColor(.white)
                                 
-                                Text(Date().formatted(
+                                Text(Date()
+                                    .formatted(
                                     .dateTime
                                         .year(.twoDigits)
                                         .month()
                                         .day()
                                         .weekday()
                                 ))
+                                .font(.custom("Heebo-Regular_Light", size: 25))
                             }
                         }
                         
@@ -104,7 +106,8 @@ struct ContentView: View {
                             
                             // Counter
                             Text(String(poop))
-                                .font(.system(size: 96, weight: .medium, design: .rounded))
+//                                .font(.system(size: 96, weight: .medium, design: .rounded))
+                                .font(.custom("Heebo-Regular_Medium",size: 96))
                                 .foregroundColor(.accentColor)
                                 .glowBorder(color: .white, lineWidth: 1)
                             
