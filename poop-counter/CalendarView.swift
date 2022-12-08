@@ -9,23 +9,8 @@ import SwiftUI
 
 struct CalendarView: View {
     
-    // TEMPORARY DATA
-    @State var data: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
+    @Binding var data:[Int]
     @State var dataAsString = [String]()
-    @State var dataMap: [String:Int] = [
-        "January":51,
-        "February":10,
-        "March":0,
-        "April":69,
-        "May":3,
-        "June":71,
-        "July":0,
-        "August":45,
-        "September":2,
-        "October":34,
-        "November":100,
-        "December":0
-    ]
     
     @State var showSave = false
     @State var isEditing = false
@@ -124,7 +109,8 @@ struct CalendarView: View {
                         .cornerRadius(25)
                         .shadow(color: .gray, radius:10.0)
                     VStack {
-                        Text("\(calcCumulativeYr2(data: dataMap))")
+//                        Text("\(calcCumulativeYr2(data: dataMap))")
+                        Text("\(calcCumulativeYr(data:data))")
                             .foregroundColor(.black)
                             .frame(maxWidth: 315, alignment: .leading)
                             .font(.system(size:45, weight:.medium, design:.rounded))
@@ -145,7 +131,7 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        CalendarView(data: .constant([0,0,0,0,0,0,0,0,0,0,0,0]))
     }
 }
 

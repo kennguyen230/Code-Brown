@@ -9,13 +9,7 @@ import SwiftUI
 
 struct StatsView: View {
     
-    // TEMPORARY DATA
-    @State var data: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
-    @State var data2020: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
-    @State var data2021: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
-    @State var data2022: [Int] = [50, 10, 0, 69, 3, 71, 0, 45, 2, 34, 100, 0]
-    @State var dataGrouped = [[Int]]() //TODO: FIND OUT HOW TO GROUP DATA
-    @State var dataAsString = [String]()
+    @Binding var data:[Int]
     private let months: [String] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     var body: some View {
@@ -30,13 +24,12 @@ struct StatsView: View {
                             .shadow(color: Color.black.opacity(0.8), radius: 10)
                         VStack {
                             Text("\(calcCumulativeYr(data:data))")
-                                .font(.custom("Handjet-Regular", fixedSize: 45))
+                                .font(.custom("Heebo-Regular", fixedSize: 45))
                                 .foregroundColor(.black)
                                 .frame(maxWidth: 315, alignment: .leading)
-//                                .font(.system(size:45, weight:.medium, design:.rounded))
                             Text("Cumulative poops this year")
                                 .foregroundColor(.black)
-                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .font(.custom("Heebo-Regular", fixedSize: 14))
                                 .frame(maxWidth: 315, alignment: .leading)
                         }
                     }
@@ -51,11 +44,10 @@ struct StatsView: View {
                             Text("n/a")
                                 .foregroundColor(.black)
                                 .frame(maxWidth: 315, alignment: .leading)
-//                                .font(.system(size:45, weight:.medium, design:.rounded))
-                                .font(.custom("Handjet-Regular", fixedSize: 45))
+                                .font(.custom("Heebo-Regular", fixedSize: 45))
                             Text("Cumulative poops all time")
                                 .foregroundColor(.black)
-                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .font(.custom("Heebo-Regular", fixedSize: 14))
                                 .frame(maxWidth: 315, alignment: .leading)
                         }
                     }
@@ -72,11 +64,10 @@ struct StatsView: View {
                                 Text("\(avgPoopsYr(data:data))")
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 125, alignment: .leading)
-//                                    .font(.system(size:25, weight:.medium, design:.rounded))
-                                    .font(.custom("Handjet-Regular", fixedSize: 35))
+                                    .font(.custom("Heebo-Regular", fixedSize: 35))
                                 Text("Avg poops this year")
                                     .foregroundColor(.black)
-                                    .font(.system(size:15, weight:.medium, design:.rounded))
+                                    .font(.custom("Heebo-Regular", fixedSize: 14))
                                     .frame(maxWidth: 125, alignment: .leading)
                             }
                         }
@@ -93,11 +84,10 @@ struct StatsView: View {
                                 Text("n/a")
                                     .foregroundColor(.black)
                                     .frame(maxWidth: 125, alignment: .leading)
-//                                    .font(.system(size:25, weight:.medium, design:.rounded))
-                                    .font(.custom("Handjet-Regular", fixedSize: 35))
+                                    .font(.custom("Heebo-Regular", fixedSize: 35))
                                 Text("Avg poops all time")
                                     .foregroundColor(.black)
-                                    .font(.system(size:15, weight:.medium, design:.rounded))
+                                    .font(.custom("Heebo-Regular", fixedSize: 14))
                                     .frame(maxWidth: 125, alignment: .leading)
                             }
                         }
@@ -112,11 +102,10 @@ struct StatsView: View {
                             Text("\(maxPoopYr(data:data))")
                                 .foregroundColor(.black)
                                 .frame(maxWidth: 315, alignment: .leading)
-//                                .font(.system(size:35, weight:.medium, design:.rounded))
-                                .font(.custom("Handjet-Regular", fixedSize: 45))
+                                .font(.custom("Heebo-Regular", fixedSize: 45))
                             Text("Best month this year")
                                 .foregroundColor(.black)
-                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .font(.custom("Heebo-Regular", fixedSize: 14))
                                 .frame(maxWidth: 315, alignment: .leading)
                         }
                     }
@@ -130,11 +119,10 @@ struct StatsView: View {
                             Text("n/a")
                                 .foregroundColor(.black)
                                 .frame(maxWidth: 315, alignment: .leading)
-//                                .font(.system(size:35, weight:.medium, design:.rounded))
-                                .font(.custom("Handjet-Regular", fixedSize: 45))
+                                .font(.custom("Heebo-Regular", fixedSize: 45))
                             Text("Best month all time")
                                 .foregroundColor(.black)
-                                .font(.system(size:14, weight:.medium, design:.rounded))
+                                .font(.custom("Heebo-Regular", fixedSize: 14))
                                 .frame(maxWidth: 315, alignment: .leading)
                         }
                     }
@@ -149,6 +137,6 @@ struct StatsView: View {
 
 struct StatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsView()
+        StatsView(data: .constant([0,0,0,0,0,0,0,0,0,0,0,0]))
     }
 }

@@ -7,9 +7,31 @@
 
 import SwiftUI
 
+var months:[String:Int] = [
+    "January":0,
+    "February":1,
+    "March":2,
+    "April":3,
+    "May":4,
+    "June":5,
+    "July":6,
+    "August":7,
+    "September":8,
+    "October":9,
+    "November":10,
+    "December":11
+]
+
+//private var month = 0
+
 struct ContentView: View {
     
     @State private var poop = 0
+    @State private var data:[Int] = [65,52,69,65,52,52,67,81,66,83,90,16]
+    
+    init() {
+        print(data)
+    }
     
     var body: some View {
         NavigationStack {
@@ -28,7 +50,7 @@ struct ContentView: View {
                         // For the two buttons at the top
                         HStack {
                             NavigationLink {
-                                StatsView()
+                                StatsView(data: $data)
                             } label: {
                                 Image(systemName: "chart.bar.xaxis")
                                     .resizable()
@@ -36,7 +58,7 @@ struct ContentView: View {
                                     .background(
                                     Circle()
                                         .foregroundColor(.white)
-                                        .frame(width:50, height: 50)
+                                        .frame(width:47, height: 47)
                                     )
                                     .padding(.leading, 25)
                                     .padding(.top, 25)
@@ -45,7 +67,7 @@ struct ContentView: View {
                             Spacer()
                             
                             NavigationLink {
-                                CalendarView()
+                                CalendarView(data: $data)
                             } label: {
                                 Image(systemName: "calendar")
                                     .resizable()
@@ -53,7 +75,7 @@ struct ContentView: View {
                                     .background(
                                     Circle()
                                         .foregroundColor(.white)
-                                        .frame(width:50, height: 50 )
+                                        .frame(width:47, height: 47)
                                     )
                                     .padding(.trailing, 25)
                                     .padding(.top, 25)
@@ -105,18 +127,18 @@ struct ContentView: View {
                             Spacer()
                             
                             // Counter
-                            Text(String(poop))
+                            Text(String("\(data[getMonth()])"))
 //                                .font(.system(size: 96, weight: .medium, design: .rounded))
                                 .font(.custom("Heebo-Regular_Medium",size: 96))
                                 .foregroundColor(.accentColor)
                                 .glowBorder(color: .white, lineWidth: 1)
                             
-                            
                             Spacer()
                             
                             // Plus button
                             Button{
-                                poop+=1
+                                data[getMonth()] += 1
+                                
                             } label: {
                                 Image(systemName:"plus.circle")
                                     .resizable()
@@ -138,4 +160,19 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+func getMonth() -> Int {
+    var month = 99
+    let m = Date()
+        .formatted(
+        .dateTime
+            .month(.wide)
+        )
+    months.forEach() { mo in
+        if(m == mo.key) {
+            month = mo.value
+        }
+    }
+    return month
 }
