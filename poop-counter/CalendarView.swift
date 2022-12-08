@@ -71,24 +71,34 @@ struct CalendarView: View {
                                     .cornerRadius(25)
                                     .shadow(color: .gray, radius: 8.0)
                                 
-                                if (data[index] == 0) {
-                                    //TODO: MAKE IT SO THAT YOU CAN EDIT INVISIBLE MONTHS
-                                    Text("\(data[index])")
-                                        .opacity(0)
+//                                if (data[index] == 0) {
+//                                    //TODO: MAKE IT SO THAT YOU CAN EDIT INVISIBLE MONTHS
+//                                    Text("\(data[index])")
+//                                        .opacity(0)
+//                                }
+//                                else {
+//                                    if (isEditing) {
+//                                        TextField("Name", text: $dataAsString[index])
+//                                            .foregroundColor(.black)
+//                                            .font(.custom("Heebo-Regular_Light",size:40))
+//                                            .multilineTextAlignment(.center)
+//                                    }
+//                                    else {
+//                                        Text("\(data[index])")
+//                                            .foregroundColor(.black)
+//                                            .font(.custom("Heebo-Regular",size:40))
+//                                    }
+//                                }
+                                if (isEditing) {
+                                    TextField("Name", text: $dataAsString[index])
+                                        .foregroundColor(.black)
+                                        .font(.custom("Heebo-Regular_Light",size:40))
+                                        .multilineTextAlignment(.center)
                                 }
                                 else {
-                                    if (isEditing) {
-                                        TextField("Name", text: $dataAsString[index])
-                                            .foregroundColor(.black)
-                                            .font(.custom("Heebo-Regular_Light",size:40))
-                                            .multilineTextAlignment(.center)
-                                    }
-                                    else {
-                                        Text("\(data[index])")
-                                            .foregroundColor(.black)
-                                            .font(.custom("Heebo-Regular",size:40))
-                                    }
-                                    
+                                    Text("\(data[index])")
+                                        .foregroundColor(.black)
+                                        .font(.custom("Heebo-Regular",size:40))
                                 }
                             }
                             .aspectRatio(contentMode: .fit)

@@ -22,15 +22,13 @@ var months:[String:Int] = [
     "December":11
 ]
 
-//private var month = 0
-
 struct ContentView: View {
     
-    @State private var poop = 0
-    @State private var data:[Int] = [65,52,69,65,52,52,67,81,66,83,90,16]
+//    @State private var data:[Int] = [65,52,69,65,52,52,67,81,66,83,90,16]
+    @State var savedData:[Int] = ((UserDefaults.standard.array(forKey:"USER_DATA") as? [Int] ?? [0,0,0,0,0,0,0,0,0,0,0,0]))
     
     init() {
-        print(data)
+        print(savedData)
     }
     
     var body: some View {
@@ -50,7 +48,7 @@ struct ContentView: View {
                         // For the two buttons at the top
                         HStack {
                             NavigationLink {
-                                StatsView(data: $data)
+                                StatsView(data: $savedData)
                             } label: {
                                 Image(systemName: "chart.bar.xaxis")
                                     .resizable()
@@ -67,7 +65,7 @@ struct ContentView: View {
                             Spacer()
                             
                             NavigationLink {
-                                CalendarView(data: $data)
+                                CalendarView(data: $savedData)
                             } label: {
                                 Image(systemName: "calendar")
                                     .resizable()
@@ -111,10 +109,12 @@ struct ContentView: View {
                             
                             // Minus button
                             Button{
-                                if(poop == 0){
+                                if(savedData[getMonth()] == 0){
                                     return
                                 } else {
-                                    poop-=1
+                                    savedData[getMonth()]-=1
+                                    UserDefaults.standard.set(savedData, forKey:"USER_DATA")
+                                    print("Minus")
                                 }
                             } label: {
                                 Image(systemName:"minus.circle")
@@ -127,8 +127,7 @@ struct ContentView: View {
                             Spacer()
                             
                             // Counter
-                            Text(String("\(data[getMonth()])"))
-//                                .font(.system(size: 96, weight: .medium, design: .rounded))
+                            Text(String("\(savedData[getMonth()])"))
                                 .font(.custom("Heebo-Regular_Medium",size: 96))
                                 .foregroundColor(.accentColor)
                                 .glowBorder(color: .white, lineWidth: 1)
@@ -137,8 +136,9 @@ struct ContentView: View {
                             
                             // Plus button
                             Button{
-                                data[getMonth()] += 1
-                                
+                                savedData[getMonth()] += 1
+                                UserDefaults.standard.set(savedData, forKey:"USER_DATA")
+                                print("Plus")
                             } label: {
                                 Image(systemName:"plus.circle")
                                     .resizable()
